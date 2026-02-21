@@ -1,21 +1,9 @@
 import React from 'react';
-import { Tilt } from 'react-tilt';
+import Tilt from 'react-parallax-tilt';
 import './Footer.css';
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
-
-    const tiltOptions = {
-        reverse: false,
-        max: 8, // Set max tilt degree
-        perspective: 1000,
-        scale: 1.02,
-        speed: 1000,
-        transition: true,
-        axis: null,
-        reset: true,
-        easing: "cubic-bezier(.03,.98,.52,.99)",
-    };
 
     return (
         <footer className="footer-section">
@@ -24,7 +12,14 @@ const Footer = () => {
 
                     <div className="footer-top">
                         <div className="footer-brand">
-                            <Tilt options={tiltOptions}>
+                            <Tilt
+                                tiltMaxAngleX={8}
+                                tiltMaxAngleY={8}
+                                perspective={1000}
+                                scale={1.02}
+                                transitionSpeed={1000}
+                                gyroscope={true}
+                            >
                                 <div className="footer-portrait-card glass-panel">
                                     <div className="portrait-image-wrapper">
                                         <img src="/footer image.webp" alt="Professional Portrait" className="portrait-image" />
@@ -77,7 +72,14 @@ const Footer = () => {
                                 </div>
                             </div>
 
-                            <Tilt options={tiltOptions}>
+                            <Tilt
+                                tiltMaxAngleX={5}
+                                tiltMaxAngleY={5}
+                                perspective={1000}
+                                scale={1.01}
+                                transitionSpeed={1000}
+                                gyroscope={true}
+                            >
                                 <div className="footer-middle-content">
                                     <div className="footer-stat-card">
                                         <span className="stat-number">50+</span>
