@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Tilt } from 'react-tilt';
+import Tilt from 'react-parallax-tilt';
 import { Bot, Video, MonitorPlay } from 'lucide-react';
 import './Expertise.css';
 
@@ -43,7 +43,10 @@ const Expertise = () => {
                 {services.map((service, index) => (
                     <Tilt
                         key={index}
-                        options={{ max: 15, scale: 1.05, speed: 400 }}
+                        tiltMaxAngleX={15}
+                        tiltMaxAngleY={15}
+                        scale={1.05}
+                        transitionSpeed={400}
                         className="glass-panel expertise-card"
                     >
                         <div className="expertise-card-inner">
