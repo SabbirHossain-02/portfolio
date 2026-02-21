@@ -1,0 +1,95 @@
+.expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.expertise-card {
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+    border: none;
+    background: var(--bg-secondary);
+}
+
+.expertise-card:hover {
+    box-shadow: 0 0 25px var(--accent-glow);
+}
+
+.expertise-card-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.expertise-video-container {
+    height: 250px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 2px solid var(--accent-glow);
+}
+
+.expertise-hover-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    filter: brightness(0.7);
+}
+
+.expertise-card:hover .expertise-hover-video {
+    transform: scale(1.1);
+    filter: brightness(1);
+}
+
+.expertise-video-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, var(--bg-secondary) 100%);
+    pointer-events: none;
+}
+
+.expertise-icon-wrapper {
+    position: absolute;
+    bottom: 1rem;
+    left: 1.5rem;
+    color: var(--accent-color);
+    background: var(--bg-color);
+    padding: 0.75rem;
+    border-radius: 16px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+.expertise-content {
+    padding: 2.5rem 1.5rem 2rem 1.5rem;
+    flex-grow: 1;
+}
+
+.expertise-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.expertise-content p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .expertise-card {
+        height: auto;
+    }
+
+    .expertise-card-inner {
+        height: auto;
+    }
+
+    .expertise-content {
+        padding: 2rem 1.5rem;
+    }
+}

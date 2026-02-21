@@ -1,0 +1,215 @@
+.gallery-section {
+    position: relative;
+    padding-top: 6rem;
+}
+
+.gallery-masonry {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-auto-rows: 250px;
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 24px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--glass-border);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+/* Asymmetric sizing based on category classes */
+.gallery-item.large {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.gallery-item.medium {
+    grid-column: span 1;
+    grid-row: span 2;
+}
+
+.gallery-item.small {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+@media (max-width: 768px) {
+    .gallery-masonry {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 250px;
+    }
+
+    .gallery-item.large,
+    .gallery-item.medium,
+    .gallery-item.small {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+}
+
+.gallery-video-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.6) grayscale(20%);
+    transition: filter 0.5s ease, transform 0.8s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5), 0 0 20px var(--accent-glow);
+    border-color: var(--accent-color);
+}
+
+.gallery-item:hover .gallery-video-thumb {
+    filter: brightness(0.9) grayscale(0%);
+    transform: scale(1.05);
+}
+
+/* Peer Overrides when hovering the masonry grid */
+.gallery-masonry:has(.gallery-item:hover) .gallery-item:not(:hover) {
+    opacity: 0.3;
+    filter: grayscale(100%);
+    transform: scale(0.95);
+}
+
+.gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 50%);
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.gallery-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2rem;
+    pointer-events: none;
+}
+
+.gallery-play-btn {
+    align-self: flex-end;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.75rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s ease;
+}
+
+.gallery-item:hover .gallery-play-btn {
+    opacity: 1;
+    transform: scale(1);
+    background: var(--accent-color);
+}
+
+.gallery-text {
+    transform: translateY(10px);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-text {
+    transform: translateY(0);
+}
+
+.gallery-text h3 {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin-bottom: 0.2rem;
+}
+
+.gallery-text p {
+    font-size: 1rem;
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+/* Lightbox Styles */
+.lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 3001;
+    padding: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.lightbox-close:hover {
+    transform: scale(1.1) rotate(90deg);
+}
+
+.lightbox-content {
+    width: 100%;
+    max-width: 1200px;
+    background: var(--bg-secondary);
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+}
+
+.lightbox-video {
+    width: 100%;
+    max-height: 70vh;
+    background: #000;
+    outline: none;
+}
+
+.lightbox-info {
+    padding: 2rem;
+    background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-color) 100%);
+}
+
+.lightbox-info h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.lightbox-info p {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+}
+
+@media (max-width: 768px) {
+    .lightbox-overlay {
+        padding: 1rem;
+    }
+
+    .lightbox-content {
+        border-radius: 16px;
+    }
+
+    .lightbox-info {
+        padding: 1.5rem;
+    }
+}

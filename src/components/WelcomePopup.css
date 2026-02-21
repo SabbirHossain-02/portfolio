@@ -1,0 +1,149 @@
+.vault-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: transparent;
+}
+
+.vault-door {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: var(--bg-color);
+    border-right: 1px solid var(--glass-border);
+    border-left: 1px solid var(--glass-border);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 1.2s cubic-bezier(0.8, 0, 0.2, 1);
+}
+
+.vault-door::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(30, 30, 30, 0.8) 0%, var(--bg-color) 100%);
+}
+
+.left-door {
+    left: 0;
+    transform-origin: left;
+}
+
+.right-door {
+    right: 0;
+    transform-origin: right;
+}
+
+/* Door opening animations */
+.opening-left {
+    transform: translateX(-100%);
+}
+
+.opening-right {
+    transform: translateX(100%);
+}
+
+.vault-content {
+    position: relative;
+    z-index: 10001;
+    /* Above the doors */
+    text-align: center;
+    padding: 3rem;
+    background: rgba(10, 10, 10, 0.6);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+    width: 90%;
+    max-width: 500px;
+}
+
+.vault-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.vault-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.vault-input {
+    width: 100%;
+    padding: 1.2rem;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--glass-border);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 1.2rem;
+    text-align: center;
+    outline: none;
+    transition: border-color 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.vault-input:focus {
+    border-color: var(--accent-color);
+}
+
+.vault-input::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.5;
+}
+
+.vault-submit {
+    margin-top: 1rem;
+    padding: 1.2rem;
+    background: var(--text-primary);
+    color: var(--bg-color);
+    border: none;
+    font-size: 1.2rem;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+}
+
+.vault-submit:hover {
+    background: var(--accent-color);
+    color: var(--text-primary);
+    box-shadow: 0 0 20px var(--accent-glow);
+    transform: translateY(-2px);
+}
+
+.welcome-message {
+    position: absolute;
+    z-index: 9998;
+    /* Below doors, so doors revealing it looks cool */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.welcome-message h1 {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 30px var(--accent-glow);
+}
+
+.welcome-message p {
+    font-size: 1.5rem;
+    letter-spacing: 0.2em;
+    color: var(--text-secondary);
+}

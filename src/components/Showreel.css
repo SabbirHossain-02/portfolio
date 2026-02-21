@@ -1,0 +1,136 @@
+.showreel-section {
+    position: relative;
+    height: 300vh;
+    /* gives enough scroll space for horizontal slide */
+    background: var(--bg-color);
+}
+
+.showreel-sticky-container {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.showreel-title {
+    margin-bottom: 2rem;
+    padding-top: 4rem;
+}
+
+.showreel-scroll-area {
+    width: 100%;
+    overflow: hidden;
+}
+
+.showreel-track {
+    display: flex;
+    gap: 3rem;
+    padding: 2rem 0;
+    width: max-content;
+}
+
+.showreel-item {
+    position: relative;
+    width: 60vw;
+    min-width: 600px;
+    height: 50vh;
+    min-height: 400px;
+    overflow: hidden;
+    flex-shrink: 0;
+    cursor: pointer;
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    background: var(--bg-secondary);
+}
+
+@media (max-width: 768px) {
+    .showreel-section {
+        height: auto !important;
+        padding: 4rem 0;
+    }
+
+    .showreel-sticky-container {
+        position: relative;
+        height: auto;
+    }
+
+    .showreel-track {
+        flex-direction: column;
+        width: 100%;
+        gap: 2rem;
+        transform: none !important;
+    }
+
+    .showreel-item {
+        width: 100%;
+        min-width: unset;
+        height: 350px;
+    }
+
+    .showreel-text h3 {
+        font-size: 1.8rem;
+    }
+}
+
+.showreel-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.6);
+    transition: filter 0.5s ease, transform 0.8s ease;
+}
+
+.showreel-item:hover .showreel-video {
+    filter: brightness(0.9);
+    transform: scale(1.05);
+}
+
+.showreel-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.9) 100%);
+    pointer-events: none;
+}
+
+.showreel-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2.5rem;
+    pointer-events: none;
+}
+
+.play-button {
+    align-self: flex-end;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 1rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.showreel-item:hover .play-button {
+    transform: scale(0.5);
+    opacity: 0;
+}
+
+.showreel-text h3 {
+    font-size: 2.5rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.showreel-text p {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    font-weight: 600;
+}
